@@ -12,10 +12,7 @@ public class SoundsDataGenerator implements IDataGenerator {
     public static JsonObject generateSound(SoundEvent soundEvent) {
         JsonObject soundDesc = new JsonObject();
 
-        soundDesc.addProperty("id", BuiltInRegistries.SOUND_EVENT.getId(soundEvent)); // raw 0-indexed sound_event registry id. The wire packet encodes (id + 1),
-        // with 0 meaning "read an inline SoundEvent instead" — but that offset is applied by
-        // the packet codec (registryEntryHolder), NOT here. Adding it to the registry dump
-        // double-counts and shifts every consumer's sound lookup by one.
+        soundDesc.addProperty("id", BuiltInRegistries.SOUND_EVENT.getId(soundEvent)); // the registry id: node-minecraft-protocol turns the packet value (id + 1, 0 = inline) back into it
         soundDesc.addProperty("name", soundEvent.location().getPath());
 
         return soundDesc;
