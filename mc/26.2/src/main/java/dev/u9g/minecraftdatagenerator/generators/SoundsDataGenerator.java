@@ -12,7 +12,7 @@ public class SoundsDataGenerator implements IDataGenerator {
     public static JsonObject generateSound(SoundEvent soundEvent) {
         JsonObject soundDesc = new JsonObject();
 
-        soundDesc.addProperty("id", BuiltInRegistries.SOUND_EVENT.getId(soundEvent)); // the registry id: node-minecraft-protocol turns the packet value (id + 1, 0 = inline) back into it
+        soundDesc.addProperty("id", BuiltInRegistries.SOUND_EVENT.getId(soundEvent));
         soundDesc.addProperty("name", soundEvent.location().getPath());
 
         return soundDesc;
